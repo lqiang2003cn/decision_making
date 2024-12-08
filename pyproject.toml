@@ -6,7 +6,7 @@ authors = ["Corrado <corrado.pezzato@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.6"
-numpy = "1.19.5"
+numpy = "1.26.4"
 
 [tool.poetry.dev-dependencies]
 

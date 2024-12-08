@@ -25,9 +25,11 @@ class MDPIsAt:
         # Likelihood matrix matrices
         # ----------------------------------------------------------
         self.A = np.eye(2)  # Identity mapping
+
         # Prior preferences, initially set to zero, so no preference
         # -----------------------------------------------------------
         self.C = np.array([[0.], [0.]])
+
         # Belief about initial state, D
         # -----------------------------------------------------------
         self.D = np.array([[0.5], [0.5]])
@@ -35,6 +37,7 @@ class MDPIsAt:
         # Preference about actions, idle is slightly preferred
         # -----------------------------------------------------------
         self.E = np.array([[1.01], [1]])
+
         # Learning rate for initial state update
         # -----------------------------------------------------------
         self.kappa_d = 1
@@ -57,15 +60,18 @@ class MDPIsHolding:
                                     [0, 0]])
         self.B[:, :, 3] = np.array([[0, 0],  # Place_somewhere action
                                     [1, 1]])
+
         # Preconditions of the actions above
         self.preconditions = [['none'], ['not_holding_obj', 'reachable', 'visible'], ['not_holding_obj', 'reachable', 'visible'], ['none']] # [Idle precondition], [pickRight preconditions], [pickLeft preconditions], [place precondition]  
 
         # Likelihood matrix matrices
         # ----------------------------------------------------------
         self.A = np.eye(2)  # Identity mapping
+
         # Prior preferences, initially set to zero, so no preference
         # -----------------------------------------------------------
         self.C = np.array([[0.], [0.]])
+
         # Belief about initial state, D
         # -----------------------------------------------------------
         self.D = np.array([[0.5], [0.5]])
@@ -73,6 +79,7 @@ class MDPIsHolding:
         # Preference about actions, idle is slightly preferred
         # -----------------------------------------------------------
         self.E = np.array([[1.01], [1], [1], [1]])
+
         # Learning rate for initial state update
         # -----------------------------------------------------------
         self.kappa_d = 1
@@ -85,6 +92,7 @@ class MDPIsReachable:
 
         self.V = np.array([0, 1])  # Allowable policies, it indicates policies of depth 1
         self.B = np.zeros((2, 2, 2))  # Allowable actions initiation
+
         # Transition matrices
         # ----------------------------------------------------------
         self.B[:, :, 0] = np.eye(2)             # Idle action
@@ -94,14 +102,15 @@ class MDPIsReachable:
         # Preconditions of the actions above
         # ----------------------------------------------------------
         self.preconditions = [['none'], ['none']]    # No preconditions needed for Idle and move_to_reach                       
-           
 
         # Likelihood matrix matrices
         # ----------------------------------------------------------
         self.A = np.eye(2)  # Identity mapping
+
         # Prior preferences, initially set to zero, so no preference
         # -----------------------------------------------------------
         self.C = np.array([[0.], [0.]])
+
         # Belief about initial state, D
         # -----------------------------------------------------------
         self.D = np.array([[0.5], [0.5]])
@@ -109,6 +118,7 @@ class MDPIsReachable:
         # Preference about actions, idle is slightly preferred
         # -----------------------------------------------------------
         self.E = np.array([[1.01], [1]])
+
         # Learning rate for initial state update
         # -----------------------------------------------------------
         self.kappa_d = 1
@@ -121,6 +131,7 @@ class MDPIsVisible:
 
         self.V = np.array([0, 1])  
         self.B = np.zeros((2, 2, 2))
+
         # Transition matrices
         # ----------------------------------------------------------
         self.B[:, :, 0] = np.eye(2)             # Idle action
@@ -135,9 +146,11 @@ class MDPIsVisible:
         # Likelihood matrix matrices
         # ----------------------------------------------------------
         self.A = np.eye(2)  # Identity mapping
+
         # Prior preferences, initially set to zero, so no preference
         # -----------------------------------------------------------
         self.C = np.array([[0.], [0.]])
+
         # Belief about initial state, D
         # -----------------------------------------------------------
         self.D = np.array([[0.5], [0.5]])
@@ -145,6 +158,7 @@ class MDPIsVisible:
         # Preference about actions, idle is slightly preferred
         # -----------------------------------------------------------
         self.E = np.array([[1.01], [1]])
+
         # Learning rate for initial state update
         # -----------------------------------------------------------
         self.kappa_d = 1
@@ -163,6 +177,7 @@ class MDPIsPlacedAt:
         self.B[:, :, 0] = np.eye(2)             # Idle action
         self.B[:, :, 1] = np.array([[1, 1],     # Action Place_in_basket
                                     [0, 0]])
+
         # Preconditions of the actions above
         # ----------------------------------------------------------
         self.preconditions = [['none'], ['holding_obj']]    # [idle precondition], [place_in_backet_obj]                  
@@ -171,18 +186,23 @@ class MDPIsPlacedAt:
         # Likelihood matrix matrices
         # ----------------------------------------------------------
         self.A = np.eye(2)  # Identity mapping
+
         # Prior preferences, initially set to zero, so no preference
         # -----------------------------------------------------------
         self.C = np.array([[0.], [0.]])
+
         # Belief about initial state, D
         # -----------------------------------------------------------
         self.D = np.array([[0.5], [0.5]])
+
         # Initial guess about the states d, all equally possible, this is updated over time
         # -----------------------------------------------------------
         self.d = np.array([[0.5], [0.5]])
+
         # Preference about actions, idle is slightly preferred
         # -----------------------------------------------------------
         self.E = np.array([[1.01], [1]])
+
         # Learning rate for initial state update
         # -----------------------------------------------------------
         self.kappa_d = 1
